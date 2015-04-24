@@ -1,0 +1,7 @@
+build*
+
+*~
+.*.swp
+.*.swo
+src/statArb/core/util/gitversion.hpp
+src/statArb/core/util/arma_config.hpp

@@ -1,0 +1,32 @@
+# - Try to find ImagechaoWangCppUtil
+# Once done, this will define
+#
+#  chaoWangCppUtil_FOUND - system has chaoWangCppUtil
+#  chaoWangCppUtil_INCLUDE_DIRS - the chaoWangCppUtil include directories
+#  chaoWangCppUtil_LIBRARIES - link these to use chaoWangCppUtil
+
+include(LibFindMacros)
+
+# Dependencies
+libfind_package(chaoWangCppUtil chaoWangCppUtil)
+
+# Use pkg-config to get hints about paths
+libfind_pkg_check_modules(chaoWangCppUtil_PKGCONF ImagechaoWangCppUtil)
+
+# Include dir
+find_path(chaoWangCppUtil_INCLUDE_DIR
+  NAMES chaoWangCppUtil.h
+  PATHS ${chaoWangCppUtil_PKGCONF_INCLUDE_DIRS}
+)
+
+# Finally the library itself
+find_library(chaoWangCppUtil_LIBRARY
+  NAMES chaoWangCppUtil
+  PATHS ${chaoWangCppUtil_PKGCONF_LIBRARY_DIRS}
+)
+
+# Set the include dir variables and the libraries and let libfind_process do the rest.
+# NOTE: Singular variables for this library, plural for libraries this this lib depends on.
+set(chaoWangCppUtil_PROCESS_INCLUDES chaoWangCppUtil_INCLUDE_DIR chaoWangCppUtil_INCLUDE_DIRS)
+set(chaoWangCppUtil_PROCESS_LIBS chaoWangCppUtil_LIBRARY chaoWangCppUtil_LIBRARIES)
+libfind_process(chaoWangCppUtil)
